@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<title>Loading example</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/jquery.loading.css">
+	
+	<!--  Just example style  -->
+	<style>
+		div.centered{
+			width: 360px;
+			margin: 55px auto
+		}
+		
+		li{
+			list-style: none
+		}
+	</style>
+</head>
+
+<body>
+	
+	<div class="centered">
+		<ul>
+			<li>
+				<div id="loading"></div>
+			</li>
+			
+			<li>	
+				<div class="loading2"></div>
+			</li>
+			
+			<li>	
+				<div class="loading3"></div>
+			</li>
+		</ul>			
+	</div>
+	
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="assets/js/jquery.loading.js"></script>
+	<script>
+		$(document).ready(function(){
+			$.loading({ selector: '#loading', title: 'Loading in change', width: 340, 
+				initPercent: 13});
+			
+			$.loading({ selector: '.loading2', title: 'Loading static', width: 340, 
+				initPercent: 34});
+			
+			$.loading({ selector: '.loading3', title: 'Loading static 2', width: 340, 
+				initPercent: 55});
+			
+			
+			<!--  Just example features  -->
+			setInterval(function(){
+				var actualPercent = parseInt($("#loading").attr('percent'));
+				actualPercent = actualPercent + 20;
+				actualPercent = actualPercent>99 ? 0 : actualPercent;
+				$.loading("change", { selector: '#loading', width: 340, initPercent: actualPercent });	
+			}, 2300);
+		});
+		
+		
+	</script>
+	
+</body>	
+</html>
